@@ -1,0 +1,25 @@
+<!-- Title and search box -->
+<header class='jumbotron'>
+    <h1 class='title'> <span>Search Engine</span> | EduBridge</h1>
+    <div class='search-box-container'>
+        <input type='text' class='search-box' placeholder='Search' autofocus ng-model='query' ng-change='delayedSearch(0)'>
+    </div>
+</header>
+
+<!-- Listing of search results -->
+<main class='results-container university-courses' ng-cloak>
+    <section class='results-info'>
+        <p id='response-details'>{{(hits | number) || 0}} {{resultsLabel || 'results'}} ({{(timeTook || 0)}}ms)</p>
+        <p ng-show='paginationEnabled()' id='pagination-details'>Showing {{paginationLowerBound}} - {{paginationUpperBound}}</p>
+    </section>
+    <section class='results'>
+        <p class='no-results' ng-show='!results.length && !loading'>No Results</p>
+        <article ng-click="selectCourse(result.ID, result.ID + ' - ' + result.TITLE)" class='result' ng-repeat='result in results track by $id(result)'>
+            <h2>{{result.ID}}</h2>
+            <p>{{result.TITLE}}</p>
+        </article>
+    </section>
+    <section class='pagination-controls'>
+        <button ng-click='search(-1)' ng-show='paginationEnabled() && offset !== 0' class='pager'>Previous</button><button ng-click='search(1)' ng-show='paginationEnabled()' class='pager'>Next</button>
+    </section>
+</main>

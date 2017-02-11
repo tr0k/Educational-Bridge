@@ -1,0 +1,37 @@
+<header class='result-header'>
+    <div class="container" ng-init="showSettings = false;">
+        <div class="back-button" ng-click="backToCourseSelection()">&nbsp;</div>
+        <h1 class="title-2"> {{coursename}}</h1>
+        <div ng-class="{'selected': showSettings==true, 'settings-button': true}" ng-click="showSettings = !showSettings" >&nbsp;</div>
+    </div>
+    <div class="container-small" ng-show="showSettings">
+        <div class="slider-title">Feedback weight</div>
+        <rzslider rz-slider-model="feedbackWeightSlider.value" rz-slider-options="feedbackWeightSlider.options"></rzslider>
+        <div class="update-results">
+            <a href="#" ng-click="search(0)" >Update results</a>
+        </div>
+    </div>
+</header>
+<!-- Listing of search results -->
+<main class='results-container mooc-courses' ng-cloak>
+    <section class='results-info'>
+        <p id='response-details'>{{(hits | number) || 0}} {{resultsLabel || 'results'}} ({{(timeTook || 0)}}ms)</p>
+        <p ng-show='paginationEnabled()' id='pagination-details'>Showing {{paginationLowerBound}} - {{paginationUpperBound}}</p>
+    </section>
+    <section class='results'>
+        <p class='no-results' ng-show='!results.length && !loading'>No Results</p>
+        <article id="{{result.id}}" class='result' ng-repeat='result in results track by $id(result)'>
+            <div class="result-part result-left">
+                <a href="{{result.videoURL}}"><h2>{{result.videoTitle}}</h2></a>
+                <a href="{{result.courseURL}}"><p>{{result.courseTitle}} ({{result.domain}})</p></a>
+            </div>
+            <div class="result-part result-right">
+                <div ng-class="{'vote': true, 'up': true, 'selected': (votes[result.id] || 0) == 1}" ng-click="voteUp(result.id)"></div>
+                <div ng-class="{'vote': true, 'down': true, 'selected': (votes[result.id] || 0) == -1}" ng-click="voteDown(result.id)"></div>
+            </div>
+        </article>
+    </section>
+    <section class='pagination-controls'>
+        <button ng-click='search(-1)' ng-show='paginationEnabled() && offset !== 0' class='pager'>Previous</button><button ng-click='search(1)' ng-show='paginationEnabled()' class='pager'>Next</button>
+    </section>
+</main>

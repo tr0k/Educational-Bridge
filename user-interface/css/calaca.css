@@ -1,0 +1,336 @@
+/*
+ * Calaca - Search UI for Elasticsearch
+ * https://github.com/romansanchez/Calaca
+ * http://romansanchez.me
+ * @rooomansanchez
+ * 
+ * v1.2.0
+ * MIT License
+ */
+
+/* Colors 
+Indian Red: #ed4877
+Crimson: #d62256 
+Whitesmoke: #ecf0f1 */
+
+body {
+  font-family: "Arial";
+  background-color: #d1d1d1;
+}
+
+.navbar {
+  padding-bottom: 0
+}
+
+.result-header {
+  /* height: 150px; */
+  width: 100%;
+  background-color: #009ed9;
+}
+
+.result-header .container {
+  padding: 20px 10%;
+}
+
+.result-header .container-small {
+  padding: 20px 25%;
+}
+
+.result-header .title-2 {
+  display: inline-block;
+}
+
+.result-header .back-button {
+  width: 35px;
+  height: 35px;
+  background-image: url(../images/back_icon.png);
+  -webkit-background-size: 35px;
+  background-size: 35px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.result-header .settings-button {
+  width: 35px;
+  height: 35px;
+  background: url(../images/setting-icon.png) no-repeat center;
+  -webkit-background-size: 30px;
+  background-size: 30px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  border-radius: 4px;
+  float: right;
+}
+
+.result-header .settings-button.selected {
+  background-color: #1FBEFB;
+ }
+
+.slider-title {
+  color: white;
+  font-weight: 500;
+}
+
+/* Header */
+.jumbotron {
+  height: 320px;
+  width: 100%;
+  background-color: #009ed9;
+  /*background-image: url(lib.jpg);
+  background-size: cover;
+  background-position: 50% 50%;*/
+}
+
+.title {
+  font-family: "Segoe UI";
+  font-weight: 500;
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  padding-top: 70px;
+}
+
+.title-2 {
+  font-family: "Segoe UI";
+  font-weight: 500;
+  font-size: 35px;
+  color: white;
+}
+
+.title span{
+  color: lightgrey;
+}
+
+.update-results a {
+  text-decoration: none;
+  color: white;
+  background-color: #1FBEFB;
+  padding: 10px 16px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.update-results {
+  margin-top: 20px;
+}
+.update-results a:active {
+  background-color: #1ea9e6;
+}
+
+.university-courses article {
+  cursor: pointer;
+}
+
+.university-courses article:hover{
+  background-color: rgba(0, 196, 255, 0.05);
+}
+
+.mooc-courses a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.mooc-courses a *:hover {
+  background-color: lightgray;
+  border-radius: 4px;
+}
+
+
+.mooc-courses .vote {
+  background-size: 32px;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  cursor: pointer;
+
+  vertical-align: middle;
+}
+
+.mooc-courses .vote.down {
+  background-image: url("../images/votedown.png");
+}
+.mooc-courses .vote.down:hover {
+  background-image: url("../images/votedown_hover.png");
+}
+.mooc-courses .vote.down.selected {
+  background-image: url("../images/votedown_hover.png");
+}
+
+.mooc-courses .vote.up {
+  background-image: url("../images/voteup.png");
+}
+.mooc-courses .vote.up:hover {
+  background-image: url("../images/voteup_hover.png");
+}
+.mooc-courses .vote.up.selected {
+  background-image: url("../images/voteup_hover.png");
+}
+
+
+.mooc-courses .result-right {
+  width: 10%;
+  height: 100%;
+  float: right;
+  line-height: 70px;
+}
+
+.mooc-courses .result-left {
+  width: 80%;
+}
+
+.mooc-courses .result-part {
+  display: inline-block;
+}
+
+.mooc-courses a * {
+  padding: 5px;
+}
+
+.search-box-container {
+  width: 860px;
+  height: 69px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  border-radius: 5px;
+}
+.search-box {
+  width: 812px;
+  height: 60%;
+  color: #000;
+  background-color: #fff;
+  font-size: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  outline: 0;
+  border-radius: 5px;
+  border: 3px solid #6B8689;
+}
+
+/* Search Box Placeholder text */
+::-webkit-input-placeholder {
+   color: #ecf0f1;
+}
+:-moz-placeholder {
+   color: #ecf0f1;
+}
+::-moz-placeholder {
+   color: #ecf0f1;
+}
+:-ms-input-placeholder {  
+   color: #ecf0f1;  
+}
+/* Header */
+
+/* Results */
+.results-container {
+  height: 100%;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.no-results {
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+}
+.results-info {
+  width: 860px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#response-details{
+  float: left;
+}
+#pagination-details {
+  float: right;
+}
+.results {
+  width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.pagination-controls {
+  width: 860px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.pager {
+  height: 30px;
+  width: 75px;
+  border-radius: 25px;
+  background-color: #009ed9;
+  border: none;
+  color: #fff;
+  margin: 5px;
+}
+.pager:hover {
+  cursor: pointer;
+  background-color: #006F9A;
+}
+.pager:focus {
+  outline:0;
+}
+/* Results */
+
+/* Result */
+.result {
+  /* margin-bottom: 10px; */
+  padding: 10px;
+  border-bottom: 10px solid #ecf0f1;
+}
+.result h2 {
+  font-size: 20px;
+  color: #009ed9;
+  margin-bottom: 5px;
+}
+/* Result */
+
+/* ng-repeat animation */
+.result.ng-enter, 
+.result.ng-leave, 
+.result.ng-move {
+  -webkit-transition: .5s linear all;
+  transition: .5s linear all;
+  position:relative;
+}
+.result.ng-enter {
+  left:-10px;
+  opacity:0;
+}
+.result.ng-enter.ng-enter-active {
+  left:0;
+  opacity:1;
+}
+.result.ng-leave {
+  left:0;
+  opacity:1;
+}
+.result.ng-leave.ng-leave-active {
+  left:-10px;
+  opacity:0;
+}
+/* ng-repeat animation */
+
+.nav3 {
+    height: auto;
+    width: 10%;
+    float: middle;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+
+.icons{
+    display:inline-block;
+    width: 100%; 
+    height: 100%; 
+    padding-bottom: 15px
+   }

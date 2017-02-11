@@ -1,0 +1,28 @@
+{
+  "name": "Calaca",
+  "version": "1.2.0",
+  "homepage": "https://github.com/romansanchez/Calaca",
+  "authors": [
+    "Roman Sanchez http://romansanchez.me"
+  ],
+  "description": "Search UI for Elasticsearch",
+  "main": "index.html",
+  "keywords": [
+    "elasticsearch",
+    "search"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.4.x",
+    "elasticsearch": "~2.2.0",
+    "angular-route": "1.4.x",
+    "angularjs-slider": "2.10.x"
+  }
+}

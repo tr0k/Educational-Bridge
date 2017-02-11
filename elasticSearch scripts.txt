@@ -1,0 +1,87 @@
+//1 - elasticsearch.yml
+http.cors.enabled : true
+ 
+http.cors.allow-origin : "*"
+http.cors.allow-methods : OPTIONS, HEAD, GET, POST, PUT, DELETE
+http.cors.allow-headers : X-Requested-With,X-Auth-Token,Content-Type, Content-Length
+
+//2 - Elasticsearch - JSON client
+POST educational_bridge
+{
+    "settings": {
+        "analysis": {
+            "analyzer" : {
+                "custom_analyzer" : {
+                    "tokenizer" : "classic",
+                    "filter" : [
+                        "classic",
+                        "lowercase",
+                        "custom_stopwords"
+                        ]
+                }
+            },
+            "filter" : {
+                "custom_stopwords" : {
+                    "type" : "stop",
+                    "stopwords_path" : "stopwords_en.txt"
+                }
+            }
+        }
+    }, 
+    "mappings": {
+        "mooc_video": {
+          "properties": {
+            "VIDEO_TITLE": {
+              "type": "string",
+              "analyzer": "custom_analyzer"
+            },
+            "VIDEO_URL": {
+              "type": "string"
+            },
+            "VIDEO_DESC": {
+              "type": "string",
+              "analyzer": "custom_analyzer"
+            },
+            "COURSE_TITLE": {
+              "type": "string",
+              "analyzer": "custom_analyzer"
+            },
+            "COURSE_INFO": {
+              "type": "string",
+              "analyzer": "custom_analyzer"
+            },
+            "COURSE_URL": {
+              "type": "string"
+            }
+          }
+        },
+        "study_guide_course": {
+          "properties": {
+            "TITLE": {
+              "type": "string",
+              "analyzer": "custom_analyzer"
+            },
+            "CONTENT": {
+              "type": "string",
+              "analyzer": "custom_analyzer"
+            },
+            "STUDY_GOALS": {
+              "type": "string",
+              "analyzer": "custom_analyzer"
+            },
+            "URL": {
+              "type": "string"
+            }
+          }
+        }
+    }
+}
+
+//3 - Creating database
+create table "EDUUSER".USER_FEEDBACK
+(
+	COURSE_CODE VARCHAR(10) not null,
+	MOOC_VIDEO_ID VARCHAR(40) not null,
+	POSITIVE_VOTES INTEGER,
+	NEGATIVE_VOTES INTEGER
+)
